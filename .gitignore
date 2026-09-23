@@ -1,0 +1,11 @@
+*.pdf
+*.docx
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.zip
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
