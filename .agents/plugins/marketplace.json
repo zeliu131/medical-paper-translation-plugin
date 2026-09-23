@@ -1,0 +1,20 @@
+{
+  "name": "zeliu131-medical-skills",
+  "interface": {
+    "displayName": "Zeliu131 医学技能"
+  },
+  "plugins": [
+    {
+      "name": "medical-paper-translation",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
