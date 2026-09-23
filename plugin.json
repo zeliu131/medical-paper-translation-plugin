@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "medical-paper-translation",
+  "version": "1.0.0",
+  "description": "Create paragraph-aligned English-Chinese medical paper study editions with high-resolution figures, synchronized terminology markup, and full DOCX/PDF quality control.",
+  "author": {
+    "name": "zeliu131"
+  },
+  "repository": "https://github.com/zeliu131/medical-paper-translation-plugin",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "医学论文中英精读翻译",
+        "shortDescription": "生成逐段英中对照并保留高清原始图表的医学论文精读文档",
+        "longDescription": "将生物医学或临床研究 PDF 制作为逐段英中对照的 DOCX/PDF 精读版，保留清晰原始图表、双语图注、术语同步标记，并完成逐页视觉质量检查。",
+        "developerName": "zeliu131",
+        "composerIcon": "./assets/icon.svg"
+      }
+    }
+  }
+}
