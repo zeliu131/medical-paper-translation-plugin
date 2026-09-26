@@ -45,7 +45,7 @@ Produce a faithful study edition, not a summary. Keep author text, translator no
 - Select useful medical, pathological, pharmacological, molecular, and methods vocabulary; avoid highlighting ordinary words excessively.
 - Apply the same underline and pale-yellow highlight to the complete English term and its exact Chinese counterpart.
 - Highlight primarily on first occurrence in each major section.
-- Produce a glossary with source section, English term, part of speech, pronunciation in verified IPA, professional Chinese, plain-language Chinese explanation, source sentence, collocation, and translation note. Fill the pronunciation column with IPA in slashes (for example, `/ˈhɔːməʊn/`); label UK/US variants when they differ. Use `NOT_VERIFIED` only after a documented verification attempt, never as a default or a fabricated transcription.
+- Produce a glossary with source section, English term, part of speech, one checked IPA pronunciation, professional Chinese, plain-language Chinese explanation, source sentence, collocation, and translation note. Every pronunciation cell must contain an IPA transcription in slashes (for example, `/ˈhɔːməʊn/`); do not leave it blank or use `NOT_VERIFIED`. One standard pronunciation is sufficient; do not require separate UK and US forms. Do not fabricate an uncertain pronunciation.
 
 ### 5. Preserve figures and tables
 
