@@ -1,9 +1,9 @@
 interface:
   display_name: 医学论文中英精读翻译
-  short_description: 生成逐段英中对照并保留高清原始图表的医学论文精读文档
-  default_prompt: Use $translate-medical-paper-bilingual to turn this biomedical PDF
-    into a paragraph-aligned English-Chinese DOCX and PDF with clear original figures
-    and visual QA.
+  short_description: 生成阅读版、学习版和词表，整合核实的补充材料与清晰原图
+  default_prompt: Use $translate-medical-paper-bilingual to translate this biomedical
+    PDF and its verified supplement, producing five bilingual reading, learning,
+    and glossary files with clear original figures and full visual QA.
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

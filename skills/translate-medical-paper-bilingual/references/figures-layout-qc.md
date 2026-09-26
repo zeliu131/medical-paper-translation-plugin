@@ -2,7 +2,7 @@
 
 ## Extraction order
 
-1. Inspect the PDF with `pdfinfo`, `pdfimages -list`, and rendered pages.
+1. Inspect the main PDF and each verified supplementary PDF independently with `pdfinfo`, `pdfimages -list`, and rendered pages. Enumerate figures, panels, tables, captions, source pages, and supplement identifiers before layout.
 2. Prefer a native embedded image only when it contains the complete composite figure at adequate resolution.
 3. If a figure is assembled from several PDF objects or vector elements, render the full page at 300-400 dpi and crop the complete figure region.
 4. Compare the crop with the source page. Confirm all panel letters, axes, tick labels, legends, insets, scale bars, brackets, and significance marks.
@@ -38,10 +38,17 @@
 - Use visible but light borders, deliberate column widths, sufficient padding, and readable font size.
 - Keep an original table image when it materially helps verify values, but do not force readers to rely on a blurry screenshot.
 
+## Supplementary material
+
+- Append the translated supplement after the main article and references in both editions; retain its original section, figure/table identifiers and order. Do not append untranslated raw PDF pages in place of bilingual content.
+- Preserve each original composite figure at the best fidelity available from its PDF. Follow it with its English caption and complete Chinese caption, including panel legends, scale-bar text, abbreviations and notes. Translate supplementary tables and footnotes without silently changing numbers.
+- If original-page appearance itself is needed to audit a complex page, add an original-page image in the work records; do not let it replace selectable English/Chinese text in the two editions.
+- In the learning edition only, keep any learning block after the complete bilingual caption or table note. Check that the additional block cannot separate figure and captions or cause clipping; reflow/page-break the block as a unit when necessary.
+
 ## Final visual inspection
 
 - Render every DOCX page and every final PDF page to PNG.
 - Inspect at 100% zoom and zoom further for dense figures.
 - Confirm figure order, caption order, page association, panel completeness, axis readability, table alignment, and absence of clipping or overlap.
-- Compare figure count and labels against the source article and the article's in-text references.
+- Compare figure count and labels separately against the source article and every verified supplement, including their in-text references.
 - A contact sheet is useful for global order but never replaces inspection of individual pages.
