@@ -40,4 +40,5 @@
 - Mark complete terms, not arbitrary word fragments.
 - Use the same semantic span in both languages.
 - Keep markup sparse enough for sustained reading; 60-150 terms is a typical full-paper range, adjusted to article length and learner level.
-- Never invent IPA. Use `NOT_VERIFIED` when pronunciation cannot be checked reliably.
+- Fill the glossary's pronunciation column with verified IPA in `/.../` for English words, including the content words of multiword terms in their original order. Label differing UK and US forms, for example `UK /.../; US /.../`. Check a reputable dictionary's pronunciation entry; for specialized terms, consult a medical dictionary or authoritative pronunciation source. Record the source URL or title in the translation note so the transcription can be audited.
+- For gene symbols, receptor abbreviations, chemical formulas, and initialisms, distinguish a verified spoken letter sequence from a spelled-out full name; do not invent a word-like IPA pronunciation. If no reliable pronunciation can be verified, enter `NOT_VERIFIED` and state what was checked and why it remains unresolved. Do not leave a whole column as `NOT_VERIFIED` without attempting verification term by term.
