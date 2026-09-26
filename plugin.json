@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "medical-paper-translation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create paragraph-aligned English-Chinese medical paper study editions with high-resolution figures, synchronized terminology markup, and full DOCX/PDF quality control.",
   "author": {
     "name": "zeliu131"
