@@ -1,6 +1,6 @@
 ---
 name: translate-medical-paper-bilingual
-description: Translate biomedical research PDFs and verified supplements into paragraph-aligned English-Chinese reading and vocabulary-learning DOCX/PDF editions with a medical glossary, clear original figures, and cross-paper vocabulary review. Use for medical paper translation, close reading, bilingual PDFs, or a reusable English-learning edition.
+description: Translate biomedical research PDFs and verified supplements into one paragraph-aligned English-Chinese reading DOCX/PDF with paired English-Chinese vocabulary highlights, a beginner-friendly IPA glossary, complete original figures, and visual QA. Use for medical paper translation, close reading, bilingual PDFs, or a reusable English vocabulary edition.
 ---
 
 # Translate Medical Paper Bilingual
@@ -12,7 +12,7 @@ Produce a faithful study edition, not a summary. Keep author text, translator no
 1. Read `references/translation-standard.md` before translating.
 2. Read `references/figures-layout-qc.md` before extracting figures or building the document.
 3. Read `references/deliverables.md` before naming outputs or reporting completion.
-4. Read `references/learning-and-index.md` before building the glossary or learning edition.
+4. Read `references/learning-and-index.md` before building the glossary or cross-paper index.
 5. Use the available PDF, documents, and spreadsheet skills for source inspection, DOCX/PDF generation, glossary work, rendering, and visual QA. Their artifact and render requirements remain mandatory.
 
 ## Workflow
@@ -42,19 +42,18 @@ Produce a faithful study edition, not a summary. Keep author text, translator no
 - Keep references in the source language unless the user asks otherwise. Append verified supplements after the main article's references, with source order and page/figure/table identifiers preserved. Translate supplementary prose, legends, notes, and textual tables, and retain original graphics at source-limited maximum clarity.
 - Add interpretation only in a separately labeled reading-notes document, never inside the faithful translation.
 
-### 4. Add synchronized learning markup
+### 4. Add synchronized beginner-level markup
 
-- Select useful medical, pathological, pharmacological, molecular, and methods vocabulary; avoid highlighting ordinary words excessively.
-- Apply the same underline and pale-yellow highlight to the complete English term and its exact Chinese counterpart.
-- Highlight primarily on first occurrence in each major section.
-- Produce the glossary from the article and supplements with the V2 columns and ordering plus `词根词缀释义` and `词根词缀举例` immediately after `专业中文`. Keep the intact English term and its one pronunciation cell; for a phrase, transcribe each word separately in that one cell, separated by `、`. Follow the textbook IPA and verified morphology rules in `references/translation-standard.md` and `references/learning-and-index.md`.
-- Build and verify the complete glossary before the learning edition. Reuse the same paragraph records, translations, glossary entries, evidence, and figure assets for both editions. Do not ask a model to research or generate an already verified entry again; investigate conflicts, missing evidence, or a genuinely new sense when needed. Do not trade completeness or QA for fewer calls.
+- Use a beginner-in-biomedicine threshold, not a rare-technical-terms-only threshold. Review every English paragraph, figure caption, table heading, and note for medical, molecular, pathology, statistics, methods, and general academic vocabulary that could interrupt reading. Include meaningful phrases and abbreviations. Follow the detailed selection and coverage rules in `references/translation-standard.md`; never cap entries at a convenient count. A full research article with only 38 terms requires a complete rescreen before release.
+- For every selected occurrence, apply **both** pale-yellow highlight and underline to the complete English term **and** its exact Chinese counterpart in the immediately following translation. Record the paragraph ID, term/sense ID, English/Chinese surface forms, and markup spans. Do this directly in the reading edition, not in a separate learning edition. Never count a glossary row alone as in-text markup.
+- Produce the glossary from the article and supplements with the V2 columns and ordering plus `词根词缀释义` and `词根词缀举例` immediately after `专业中文`. Keep the intact English term and its one pronunciation cell; for a phrase, transcribe each word separately in that one cell, separated by `、`. Keep all current textbook IPA rules unchanged. Follow `references/translation-standard.md` and `references/learning-and-index.md`.
+- Build and verify the glossary and a term-to-paragraph markup manifest before document layout. Reuse verified term/sense evidence; investigate conflicts, missing evidence, or new senses. Do not trade completeness or QA for fewer calls.
 
 ### 5. Preserve figures and tables
 
 - Follow `references/figures-layout-qc.md` exactly.
-- Extract the original figure at native quality when possible; otherwise crop a 300-400 dpi rendering of the source page.
-- Include every panel label, axis, legend, scale bar, significance mark, and inset. Do not include surrounding body text in the crop.
+- Extract the original figure at native quality when possible; otherwise crop a 300-400 dpi rendering of the source page. Compare each extracted figure side by side with the **original full figure** before insertion.
+- Include every panel label, axis, legend, scale bar, significance mark, and inset, including content at all four edges. Do not include surrounding body text in the crop. A clipped label or missing panel is a blocker even if all scientific data in the central image is visible.
 - Insert figures as inline objects, never floating/anchored objects.
 - Preserve aspect ratio. Put the English caption and then the Chinese caption immediately below the same figure.
 - Keep figure, English caption, and Chinese caption together. Insert a page break before the figure if the block cannot fit cleanly.
@@ -65,20 +64,20 @@ Produce a faithful study edition, not a summary. Keep author text, translator no
 - Default to a polished A4 portrait study edition unless the user specifies another format.
 - Use readable English and Chinese fonts, a restrained hierarchy, searchable text, page numbers, and a clear unofficial-translation notice.
 - Avoid floating text boxes and floating pictures.
-- Generate the reading DOCX and learning DOCX from the same content records, inserting paragraph-specific learning blocks only into the learning DOCX. Export each DOCX to its corresponding PDF. Do not maintain independently authored DOCX/PDF text.
-- Use the next unused `vN` edition directory and the five fixed filenames in `references/deliverables.md`; never overwrite prior editions.
+- Generate **one reading DOCX** with synchronized markup; export it to **one matching PDF** and make **one XLSX glossary**. Do not generate a learning DOCX/PDF or paragraph-specific learning blocks. Do not maintain independently authored DOCX/PDF text.
+- Use the next unused `vN` edition directory and the three fixed filenames in `references/deliverables.md`; never overwrite prior editions.
 
 ### 7. Run hard QA gates
 
-- Verify source-section completeness and one-to-one English/Chinese paragraph pairing separately in both editions, including supplements.
-- Verify expected figures, tables, captions, and notes against every source PDF. Confirm the five deliverables exist and each learning item is supported by a glossary entry and source ID.
-- Run `scripts/audit_bilingual_docx.py --docx <docx> --pdf <pdf> --json <report.json>` on each DOCX/PDF pair.
+- Verify source-section completeness and one-to-one English/Chinese paragraph pairing in the reading edition, including supplements.
+- Verify expected figures, tables, captions, and notes against every source PDF. Confirm exactly three user-facing deliverables exist. Reconcile every selected term against its glossary row, paragraph ID, and **two** in-text highlights/underlines; inspect paragraphs with no selected terms as well.
+- Run `scripts/audit_bilingual_docx.py --docx <docx> --pdf <pdf> --json <report.json>` and `scripts/audit_paired_markup.py --docx <docx> --manifest <paragraphs.json> --json <markup-report.json>`. The markup manifest includes **every** paired paragraph/caption, even when `terms` is empty; see `references/translation-standard.md`. Both audits must pass, and the exported PDF must show the same markup on every page.
 - Treat anchored images, broken image relationships, aspect-ratio distortion over 2%, unreadable figures, clipped captions, missing panels, or missing paired paragraphs as release blockers.
 - Target at least 220 effective ppi at displayed size. Allow 150-219 ppi only when the source itself is limiting and every label remains legible at 100% zoom; document the exception. Below 150 ppi is a blocker.
-- Render the DOCX and final PDF to page PNGs. Inspect every page at 100% zoom, not a sample.
+- Render the DOCX and final PDF to page PNGs. Inspect every page at 100% zoom, not a sample. For **every figure**, retain an original-versus-extracted-versus-final-page comparison and verify the top, bottom, left, and right edges. Use landscape or an extra full-width page for dense composites rather than trimming or shrinking away labels.
 - Check for overlap, clipping, font substitution, tofu boxes, table overflow, orphan captions, excessive blank space, misplaced figures, and inconsistent page breaks.
 - Fix, rebuild, and re-render until all pages pass.
 
 ## Completion rule
 
-Do not claim completion from file existence or structural checks alone. Completion requires content reconciliation, machine audit, and visual inspection of every final page. If a supplement is missing, deliver a clearly named main-paper edition and record the supplement as pending rather than stopping the main translation.
+Do not claim completion from file existence or structural checks alone. Completion requires content reconciliation, paired-markup and glossary audits, figure-by-figure source comparison, machine audit, and visual inspection of every final page. If a supplement is missing, deliver a clearly named main-paper edition and record the supplement as pending rather than stopping the main translation.

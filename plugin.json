@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "medical-paper-translation",
-  "version": "1.1.0",
-  "description": "Create paragraph-aligned English-Chinese medical paper reading and learning editions with verified supplements, original figures, a rooted vocabulary glossary, and full DOCX/PDF QA.",
+  "version": "1.2.0",
+  "description": "Create one paragraph-aligned English-Chinese medical paper reading DOCX/PDF with paired terminology highlights, a beginner IPA glossary, complete source figures, and full visual QA.",
   "author": {
     "name": "zeliu131"
   },
@@ -11,8 +11,8 @@
     "com.openai": {
       "interface": {
         "displayName": "医学论文中英精读翻译",
-        "shortDescription": "阅读版、学习版与词根词缀词表，整合高清补充图表",
-        "longDescription": "将医学论文及核实的补充材料制作为逐段英中对照的阅读版和词汇学习版 DOCX/PDF，加上词根词缀词表、清晰原图和逐页质量检查。",
+        "shortDescription": "双语阅读版与初学者词表，成对高亮并核对完整原图",
+        "longDescription": "将医学论文及核实的补充材料制作为逐段英中对照的阅读版 DOCX/PDF 和带音标词表，英文术语与中文译文同步高亮，并逐图比对原版避免裁切。",
         "developerName": "zeliu131",
         "composerIcon": "./assets/icon.svg"
       }
